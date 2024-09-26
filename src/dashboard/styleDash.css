@@ -1,0 +1,29 @@
+*{
+    max-width: 10008px;
+    box-sizing: border-box;
+    background-color: antiquewhite;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.writeUP{
+    background-color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 72.5rem;
+    height: 50rem;
+    margin-top: 4rem;
+    padding: 5rem;
+    border-radius: 30px;
+    margin-left: 47rem;
+}
+
+.hero .card{
+    margin-top: -3
+    0rem;
+    margin-left: 55rem;
+    width: 40rem;
+    height: 20rem;;
+    background-color: beige;
+
+}
