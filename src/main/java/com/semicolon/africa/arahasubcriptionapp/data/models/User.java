@@ -20,7 +20,6 @@ public class User {
     private String email;
     private String password;
     private String username;
-    private String phoneNumber;
-    @OneToMany
-    List<User> userList;
+//    private String phoneNumber;
+
 }
