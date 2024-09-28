@@ -5,7 +5,7 @@ function Header(){
     return (
         <>
             <div className='header'>
-                <h1>ARAHA</h1>
+                <h1 className='title'>ARAHA</h1>
                 <input type='text' placeholder='Search...'></input>
                
             </div>
