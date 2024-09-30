@@ -1,0 +1,56 @@
+*{
+    max-width: 10008px;
+    box-sizing: content-box;
+    background-color: antiquewhite;
+    padding: 0px;
+    margin: 0px;
+}
+  
+  body {
+    background-color: antiquewhite;
+  }
+  .main_landing{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    border: solid 1px red;
+    font-size: 20px;
+    padding: 10px;
+  }
+  .list-menu li a{
+    justify-content: space-between;
+    padding: 0px;
+    margin: 0px;
+    padding: 10px;
+    text-decoration: none;
+  }
+  .login > button{
+    background-color: #4CAF50;
+    color: white;
+    margin-right: 10px;
+    padding: 10px 10px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .transform{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 40px;
+    justify-content: center;
+  }
+  .paragraph{
+    
+    margin-bottom: 20px;
+  }
+  .getstarted > button{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+
+  }
