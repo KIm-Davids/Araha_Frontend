@@ -9,8 +9,8 @@ import (
 	"net/http"
 )
 
-type SubscriptionServices interface {
-	Subscription(subscription models.Subscription) (int, error)
+type CreateSubscriptionServices interface {
+	CreateSubscription(subscription models.Subscription) (int, error)
 }
 
 type NewSubscriptionServices struct{}
@@ -30,12 +30,42 @@ func (nss *NewSubscriptionServices) CreateSubscription(subscription models.Subsc
 	return http.StatusBadRequest, &invalidDetailsException
 }
 
-func (nss *NewSubscriptionServices) UpdateSubscription(subscription models.Subscription) {
-	//var missingInfoException exceptions.MyException
+type UpdateSubscriptionServices struct{}
+
+func (nss *NewSubscriptionServices) UpdateSubscription(subscription models.Subscription) (int, error) {
+	//var cannotUpdateSubscriptionException exceptions.MyException
 
 	if subscription.Amount != 0 || subscription.SubscriptionType != " " {
 		foundSubscription := mapper.FindSubscriptionTypes(subscription)
 		newSubscription := foundSubscription.Amount + subscription.Amount
+		db, err := repository.SubscriptionRepo()
+		db.Save(newSubscription)
 
+		if err != nil {
+			log.Fatalf("Couldn't update the user subscription %v", err)
+			return http.StatusAccepted, nil
+		}
 	}
+	return http.StatusNotModified, nil
+
+}
+
+func (nss *NewSubscriptionServices) DeleteSubscription(subscription models.Subscription) {
+	var UnableToDeleteSubscriptionException exceptions.MyException
+
+	db, err := repository.SubscriptionRepo()
+
+	db.Delete(subscription)
+
+	if err != nil {
+		log.Fatalf("Couldn't delete subscription %v", UnableToDeleteSubscriptionException)
+	}
+}
+
+func (nss *NewSubscriptionServices) GetAllSubscription(subscription models.Subscription){
+	var unableToGetAllValuesException exceptions.MyException
+
+	db, err := repository.SubscriptionRepo()
+	db.
+
 }

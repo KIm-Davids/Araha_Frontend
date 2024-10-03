@@ -9,6 +9,8 @@ import (
 )
 
 func CreateSubscriptionController() gin.HandlerFunc {
+	var createSubscription services.NewSubscriptionServices
+
 	return func(c *gin.Context) {
 		var Subscription models.Subscription
 
@@ -16,7 +18,7 @@ func CreateSubscriptionController() gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, gin.H{"Error creating subscription": err.Error()})
 			return
 		}
-		result, err := services.CreateSubscription(Subscription)
+		result, err := createSubscription.CreateSubscription(Subscription)
 		if err != nil {
 			fmt.Printf("Couldnt create a subscription %v", err)
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -29,11 +31,17 @@ func CreateSubscriptionController() gin.HandlerFunc {
 }
 
 func UpdateSubscriptionController() gin.HandlerFunc {
-	var subscription models.Subscription
+	var updateSubscription services.NewSubscriptionServices
 	return func(c *gin.Context) {
+		var subscription models.Subscription
 		if err := c.ShouldBindJSON(&subscription); err != nil {
 			c.JSON(http.StatusNotModified, gin.H{"Error updating subscription": err})
 		}
-		result, err := services.UpdateSubscription(subscription)
+		result, err := updateSubscription.UpdateSubscription(subscription)
+		if err != nil {
+			c.JSON(http.StatusNotModified, gin.H{"Error": err})
+		}
+		c.JSON(http.StatusOK, gin.H{"data": "Updated Successfully",
+			"Object": result})
 	}
 }
