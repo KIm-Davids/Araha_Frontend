@@ -1,7 +1,17 @@
 package com.semicolon.africa.Go_Rent_App.models;
 
-import jakarta.persistence.Entity;
+import com.semicolon.africa.Go_Rent_App.constants.Category;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity
-public class Product {
+import java.math.BigDecimal;
+
+@Getter
+@Setter
+abstract class Product {
+    private String productName;
+    private String description;
+    private Location address;
+    private BigDecimal price;
+    private Category productCategory;
 }
