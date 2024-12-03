@@ -5,7 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
 public class Location {
+
     private String street;
     private String city;
     private String country;
